@@ -50,9 +50,9 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 * :include_genre_info => false|true
 * :purchase_type => 'normal'|'regular'|'distribution'
 * :shipping => {:must_ship_international => false|true}
-* :shipping => {:country => 'country name'}  # see {International Shipping Destinations}[https://github.com/bonsaiben/rakumarket/wiki/Next-Day-Shipping-Destinations]
+* :shipping => {:country => 'country name'}  # see wiki[https://github.com/bonsaiben/rakumarket/wiki/Next-Day-Shipping-Destinations]
 * :shipping => {:must_ship_next_day => false|true}
-* :shipping => {:next_day_area => 'area name'} # see {Next Day Shipping Destinations}[https://github.com/bonsaiben/rakumarket/wiki/Next-Day-Shipping-Destinations]
+* :shipping => {:next_day_area => 'area name'} # see wiki[https://github.com/bonsaiben/rakumarket/wiki/Next-Day-Shipping-Destinations]
 * :shipping => {:must_include_cost => false|true}
 * :must_have_point_multiplication => false|true
 * :point_multiplication_factor => false|true
