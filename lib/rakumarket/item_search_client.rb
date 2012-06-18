@@ -218,18 +218,18 @@ module Rakumarket
       :page,
       :order,
       :price,
-      :available,
+      :must_be_available,
       :deep_search,
       :mobile,
-      :image,
+      :must_have_image,
       :or_search,
       :exclude_keyword,
       :include_genre_info,
       :purchase_type,
       :shipping,
-      :point_multiplication,
+      :must_have_point_multiplication,
       :point_multiplication_factor,
-      :credit_cards_accepted
+      :must_accept_credit_cards
     ]
 
     REQUEST_KEYS_TO_TRANSFORM = {
@@ -240,17 +240,17 @@ module Rakumarket
       :shop_code => :shopCode,
       :genre_id => :genreId,
       :order => :sort,
-      :available => :availability,
+      :must_be_available => :availability,
       :deep_search => :field,
       :mobile => :carrier,
-      :has_image => :imageFlag,
+      :must_have_image => :imageFlag,
       :or_search => :orFlag,
       :exclude_keyword => :NGKeyword,
       :include_genre_info => :genreInformationFlag,
       :purchase_type => :purchaseType,
-      :point_multiplication => :pointRateFlag,
+      :must_have_point_multiplication => :pointRateFlag,
       :point_multiplication_factor => :pointRate,
-      :credit_cards_accepted => :creditCardFlag
+      :must_accept_credit_cards => :creditCardFlag
     }
 
     REQUEST_VALUES_TO_TRANSFORM = {
@@ -358,11 +358,11 @@ private
         @options[:maxPrice] = price[:maximum] if price[:maximum]
       end
       if shipping = @options.delete(:shipping)
-        @options[:shipOverseasFlag] = shipping[:international] if shipping[:international]
+        @options[:shipOverseasFlag] = shipping[:must_ship_international] if shipping[:must_ship_international]
         @options[:shipOverseasArea] = shipping[:country] if shipping[:country]
-        @options[:asurakuFlag] = shipping[:next_day] if shipping[:next_day]
+        @options[:asurakuFlag] = shipping[:must_ship_next_day] if shipping[:must_ship_next_day]
         @options[:asurakuArea] = shipping[:next_day_area] if shipping[:next_day_area]
-        @options[:postageFlag] = shipping[:cost_included] if shipping[:cost_included]
+        @options[:postageFlag] = shipping[:must_include_cost] if shipping[:must_include_cost]
       end
       @options[:order].downcase! if @options[:order].is_a?(String)
       super

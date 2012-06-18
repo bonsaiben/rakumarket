@@ -50,7 +50,7 @@ describe Rakumarket do
 
     context "given a search with parameters" do
       it "accepts rubyish parameter names" do
-        items = Rakumarket.item_search("roomba", :has_image => true).items
+        items = Rakumarket.item_search("roomba", :must_have_image => true).items
         items.should be_present
       end
 
@@ -70,22 +70,22 @@ describe Rakumarket do
       end
 
       it "accepts plain country names for international shipping" do
-        items = Rakumarket.item_search("roomba", :shipping => {:international => true, :country => 'usa'} ).items
+        items = Rakumarket.item_search("roomba", :shipping => {:must_ship_international => true, :country => 'usa'} ).items
         items.should be_present
       end
 
       it "accepts plain prefecture names for next day shipping" do
-        items = Rakumarket.item_search("roomba", :shipping => {:next_day => true, :next_day_area => 'kanagawa'} ).items
+        items = Rakumarket.item_search("roomba", :shipping => {:must_ship_next_day => true, :next_day_area => 'kanagawa'} ).items
         items.should be_present
       end
 
       it "returns plain country names for international shipping" do
-        items = Rakumarket.item_search("roomba", :shipping => {:international => true, :country => 'usa'} ).items
+        items = Rakumarket.item_search("roomba", :shipping => {:must_ship_international => true, :country => 'usa'} ).items
         items.first.shipping.countries.should eq(["worldwide"])
       end
 
       it "returns plain prefecture names for next day shipping" do
-        items = Rakumarket.item_search("roomba", :shipping => {:next_day => true, :next_day_area => 'kanagawa'} ).items
+        items = Rakumarket.item_search("roomba", :shipping => {:must_ship_next_day => true, :next_day_area => 'kanagawa'} ).items
         items.first.shipping.next_day_areas.should include("kanagawa")
       end
     end
