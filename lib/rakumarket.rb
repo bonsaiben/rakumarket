@@ -65,5 +65,3 @@ end
 
 require File.join(directory, 'rakumarket', 'client')
 require File.join(directory, 'rakumarket', 'item_search_client')
-require File.join(directory, 'rakumarket', 'genre_search_client')
-require File.join(directory, 'rakumarket', 'item_code_search_client')
