@@ -11,8 +11,25 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 == FEATURES:
 
 * Idiomatic Ruby
+* Simpler and more readable representation of the underlying API
+* Returns Hashie::Mash[https://github.com/intridea/hashie]
+
+
+== GOALS:
+
+* Completeness
+
+
+== INTERFACE:
+
+=== Item Search
+
 
 == DEPENDENCIES:
+
+* HTTParty[https://github.com/jnunemaker/httparty]
+* Hashie::Mash[https://github.com/intridea/hashie]
+* ActiveSupport[https://github.com/rails/rails/tree/master/activesupport]
 
 
 == INSTALL:
