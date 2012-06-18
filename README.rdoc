@@ -21,9 +21,7 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 
 (The MIT License)
 
-Copyright (c) 2008-2009:
-
-* Benjamin Sullivan
+Copyright (c) 2012 Benjamin Sullivan
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
