@@ -295,7 +295,7 @@ module Rakumarket
       'taxFlag' => {0 => true, 1 => false},
       'postageFlag' => {0 => true, 1 => false},
       'creditCardFlag' => {0 => false, 1 => true},
-      'shopOfTheYearFlag' => {1 => true},
+      'shopOfTheYearFlag' => {0 => false, 1 => true},
       'shipOverseasFlag' => {0 => false, 1 => true},
       'asurakuFlag' => {0 => false, 1 => true}
     }
