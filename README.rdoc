@@ -26,37 +26,12 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 
 == INTERFACE:
 
-=== Item Search
+=== {Item Search}[https://github.com/bonsaiben/rakumarket/wiki/Item-Search]
 
   Rakumarket.item_search "roomba", options
 
-`options` is a hash which may include:
 
-* :affiliate_id => 'affiliate_id'
-* :call_back => 'call_back'
-* :shop_code => 'shop_code'
-* :genre_id => 'genre_id'
-* :items_per_page => 30
-* :page => 1
-* :order => 'attribute asc|desc'
-* :price => {:minimum => 0}
-* :price => {:maximum => 10000}
-* :must_be_available => false|true
-* :deep_search => false|true
-* :mobile => false|true
-* :must_have_image => false
-* :or_search => false|true
-* :exclude_keyword => 'keyword'
-* :include_genre_info => false|true
-* :purchase_type => 'normal'|'regular'|'distribution'
-* :shipping => {:must_ship_international => false|true}
-* :shipping => {:country[https://github.com/bonsaiben/rakumarket/wiki/Next-Day-Shipping-Destinations] => 'country name'}
-* :shipping => {:must_ship_next_day => false|true}
-* :shipping => {:next_day_area[https://github.com/bonsaiben/rakumarket/wiki/Next-Day-Shipping-Destinations] => 'area name'}
-* :shipping => {:must_include_cost => false|true}
-* :must_have_point_multiplication => false|true
-* :point_multiplication_factor => false|true
-* :must_accept_credit_cards => false|true
+
 
 == TODO:
 
