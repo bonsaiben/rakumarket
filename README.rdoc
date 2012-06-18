@@ -10,8 +10,64 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 
 == FEATURES:
 
+* Idiomatic Ruby
+* Simpler and more readable representation of the underlying API
+* Returns Hashie::Mash[https://github.com/intridea/hashie]
+
+
+== GOALS:
+
+* Completeness
+
+
+== CONFIGURATION:
+
+  Rakumarket.developer_id = 'your_developer_id'
+
+== INTERFACE:
+
+=== Item Search
+
+  Rakumarket.item_search "roomba", options
+
+`options` is a hash which may include:
+
+* :affiliate_id => 'affiliate_id'
+* :call_back => 'call_back'
+* :shop_code => 'shop_code'
+* :genre_id => 'genre_id'
+* :items_per_page => 30
+* :page => 1
+* :order => 'attribute asc|desc'
+* :price => {:minimum => 0}
+* :price => {:maximum => 10000}
+* :must_be_available => false|true
+* :deep_search => false|true
+* :mobile => false|true
+* :must_have_image => false
+* :or_search => false|true
+* :exclude_keyword => 'keyword'
+* :include_genre_info => false|true
+* :purchase_type => 'normal'|'regular'|'distribution'
+* :shipping => {:must_ship_international => false|true}
+* :shipping => {:country => 'country name'}
+* :shipping => {:must_ship_next_day => false|true}
+* :shipping => {:next_day_area => 'area name'}
+* :shipping => {:cost_included => false|true}
+* :must_have_point_multiplication => false|true
+* :point_multiplication_factor => false|true
+* :must_accept_credit_cards => false|true
+
+== TODO:
+
+* remaining APIs
+
 
 == DEPENDENCIES:
+
+* HTTParty[https://github.com/jnunemaker/httparty]
+* Hashie::Mash[https://github.com/intridea/hashie]
+* ActiveSupport[https://github.com/rails/rails/tree/master/activesupport]
 
 
 == INSTALL:
@@ -21,9 +77,7 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 
 (The MIT License)
 
-Copyright (c) 2008-2009:
-
-* Benjamin Sullivan
+Copyright (c) 2012 Benjamin Sullivan
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -47,4 +101,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 == CREDIT:
 
-Rakumarket is based loosely by Wynn Netherland's wrapper for the Groupon API.
+Rakumarket is inspired by multiple other Ruby API wrappers including groupon[https://github.com/pengwynn/groupon] and facebooker[https://github.com/mmangino/facebooker].
