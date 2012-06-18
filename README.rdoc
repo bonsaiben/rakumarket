@@ -53,7 +53,7 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 * :shipping => {:country => 'country name'}
 * :shipping => {:must_ship_next_day => false|true}
 * :shipping => {:next_day_area => 'area name'}
-* :shipping => {:cost_included => false|true}
+* :shipping => {:must_include_cost => false|true}
 * :must_have_point_multiplication => false|true
 * :point_multiplication_factor => false|true
 * :must_accept_credit_cards => false|true
