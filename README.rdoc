@@ -10,6 +10,7 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 
 == FEATURES:
 
+* Idiomatic Ruby
 
 == DEPENDENCIES:
 
@@ -45,4 +46,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 == CREDIT:
 
-Rakumarket is based loosely by Wynn Netherland's wrapper for the Groupon API.
+Rakumarket is inspired by multiple other Ruby API wrappers including groupon[https://github.com/pengwynn/groupon] and facebooker[https://github.com/mmangino/facebooker].
