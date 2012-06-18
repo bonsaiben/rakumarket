@@ -3,52 +3,64 @@
 A reader-friendly Ruby abstraction of the Rakuten Market API.
 
 
-== DESCRIPTION:
+== Description
 
 The goal was to abstract Rakuten's complex API away from users and provide a simpler, easier-to-read Ruby interface in its place.
 
 
-== FEATURES:
+== Features
 
 * Idiomatic Ruby
 * Simpler and more readable representation of the underlying API
+* Well-tested
 * Returns Hashie::Mash[https://github.com/intridea/hashie]
 
 
-== GOALS:
+== Goals
 
 * Completeness
+* More simplerer
+* Better-tested
+* Concrete classes and methods?
 
 
-== CONFIGURATION:
 
+== Installation
+
+  gem install rakumarket
+
+
+== Configuration
+
+A Rakuten developer ID is required.
+
+  require 'rakumarket'
   Rakumarket.developer_id = 'your_developer_id'
 
-== INTERFACE:
+== Usage
 
 === {Item Search}[https://github.com/bonsaiben/rakumarket/wiki/Item-Search]
 
   Rakumarket.item_search "roomba", options
 
 
-
-
-== TODO:
+== Todo
 
 * remaining APIs
+* RDoc markup
 
 
-== DEPENDENCIES:
+
+== Dependencies
 
 * HTTParty[https://github.com/jnunemaker/httparty]
 * Hashie::Mash[https://github.com/intridea/hashie]
 * ActiveSupport[https://github.com/rails/rails/tree/master/activesupport]
 
 
-== INSTALL:
 
 
-== LICENSE:
+== License
 
 (The MIT License)
 
@@ -74,6 +86,6 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-== CREDIT:
+== Credit
 
 Rakumarket is inspired by multiple other Ruby API wrappers including groupon[https://github.com/pengwynn/groupon] and facebooker[https://github.com/mmangino/facebooker].
