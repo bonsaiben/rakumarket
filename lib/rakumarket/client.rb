@@ -56,7 +56,7 @@ private
 
     def transform_values! hash, transformation_index
       transformation_index.each do |k,v|
-        hash[k] = v[hash[k]] if hash[k] && v.has_key?(hash[k])
+        hash[k] = v[hash[k]] if hash.has_key?(k) && v.has_key?(hash[k])
       end
       hash
     end
