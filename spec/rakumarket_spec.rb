@@ -119,7 +119,76 @@ describe Rakumarket do
         }.to raise_error(Rakumarket::RakumarketError)
       end
     end
+  end
 
+
+  describe "#genre_search" do
+    before do
+      VCR.insert_cassette 'genre_search', :record => :new_episodes
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    context "given a simple search" do
+      before do
+        @response = Rakumarket.genre_search
+      end
+      it "returns a list of items" do
+        @response.children.should be_a(Array)
+      end
+      it "returns a single parent" do
+        @response.parent.should_not be_a(Array)
+      end
+      it "returns a single current" do
+        @response.current.should_not be_a(Array)
+      end
+      it "returns genres with rubyish attributes" do
+        @response.children.first.genre_name.should eq('CD・DVD・楽器')
+      end
+    end
+
+    context "given a search with a genre id" do
+      before do
+        @response = Rakumarket.genre_search(101240)
+      end
+      it "returns a list of items" do
+        @response.children.should be_a(Array)
+      end
+      it "returns a single parent" do
+        @response.parent.should_not be_a(Array)
+      end
+      it "returns a single current" do
+        @response.current.should_not be_a(Array)
+      end
+      it "returns genres with rubyish attributes" do
+        @response.children.first.genre_name.should eq('DVD')
+      end
+      it "returns the topmost parent" do
+        response = Rakumarket.genre_search(204491)
+        response.parent.genre_name.should eq('家電')
+      end
+    end
+
+    context "given a search with parameters" do
+      it "accepts rubyish parameter names" do
+        response = Rakumarket.genre_search(0, :return_immediate_parent => false)
+        response.children.should be_present
+      end
+      it "returns the immediate parent" do
+        response = Rakumarket.genre_search(204491, :return_immediate_parent => true)
+        response.parent.genre_name.should eq('生活家電')
+      end
+    end
+
+    context "given a fruitless search" do
+      it "raises an error " do
+        expect{ 
+          items = Rakumarket.genre_search("askdjfalsjdf")
+        }.to raise_error(Rakumarket::RakumarketError)
+      end
+    end
   end
 
 end

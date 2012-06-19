@@ -12,9 +12,9 @@ module Rakumarket
     Rakumarket::ItemSearchClient.new.request({:keyword => keyword}.merge(options).hashie_symbolify_keys!)
   end
 
-  #def self.genre_search(genre_id, options={})
-  #  Rakumarket::GenreSearchClient.new.request({:genre_id => genre_id}.merge(options).hashie_symbolify_keys!)
-  #end
+  def self.genre_search(genre_id=0, options={})
+    Rakumarket::GenreSearchClient.new.request({:genre_id => genre_id}.merge(options).hashie_symbolify_keys!)
+  end
 
   #def self.item_code_search(item_code, options={})
   #  Rakumarket::ItemCodeSearchClient.new.request({:item_code => item_code}.merge(options).hashie_symbolify_keys!)
@@ -65,3 +65,4 @@ end
 
 require File.join(directory, 'rakumarket', 'client')
 require File.join(directory, 'rakumarket', 'item_search_client')
+require File.join(directory, 'rakumarket', 'genre_search_client')
