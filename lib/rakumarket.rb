@@ -47,7 +47,7 @@ end
 class Hash
   def slice(*keys)
     keys.map! { |key| convert_key(key) } if respond_to?(:convert_key, true)
-    keys.each_with_object(self.class.new) { |k, hash| hash[k] = self[k] if has_key?(k) }
+    keys.inject(self.class.new) { |hash, k| hash[k] = self[k] if has_key?(k); hash }
   end
 end
 
