@@ -339,12 +339,6 @@ module Rakumarket
       :genreId => :genre_id
     }
 
-    RESPONSE_GENRE_INFO_KEYS_TO_TRANSFORM = {
-      :genreId => :genre_id,
-      :genreName => :genre_name,
-      :itemCount => :item_count,
-      :genreLevel => :genre_level
-    }
 
 private
     def respond
@@ -419,10 +413,10 @@ private
       genre_info = @response['genreInformation']
       custom_transform(genre_info,'child'){|h,k| h[:children] = h.delete(k) }
       genre_info['children'].each do |child|
-        transform_keys! child, RESPONSE_GENRE_INFO_KEYS_TO_TRANSFORM
+        transform_keys! child, GenreSearchClient::RESPONSE_GENRE_KEYS_TO_TRANSFORM
       end
-      transform_keys! genre_info['parent'], RESPONSE_GENRE_INFO_KEYS_TO_TRANSFORM if genre_info['parent']
-      transform_keys! genre_info['current'], RESPONSE_GENRE_INFO_KEYS_TO_TRANSFORM if genre_info['current']
+      transform_keys! genre_info['parent'], GenreSearchClient::RESPONSE_GENRE_KEYS_TO_TRANSFORM if genre_info['parent']
+      transform_keys! genre_info['current'], GenreSearchClient::RESPONSE_GENRE_KEYS_TO_TRANSFORM if genre_info['current']
     end
 
     def default_options
