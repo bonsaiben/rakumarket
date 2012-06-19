@@ -79,7 +79,7 @@ private
     def self.handle_response(response)
       case response["Header"]["Status"]
       when "Success"; response
-      else; raise RakumarketError.new(Hashie::Mash.new(response["Header"].slice("Status","StatusMsg")).rubyify_keys!)
+      else; raise RakumarketError.new(Hashie::Mash.new({:status => response["Header"]["Status"], :status_msg => response["Header"]["StatusMsg"]}))
       end
 
       Hashie::Mash.new(response)

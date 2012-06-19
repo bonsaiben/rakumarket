@@ -1,6 +1,5 @@
 require 'httparty'
 require 'hashie'
-require 'active_support'
 
 directory = File.expand_path(File.dirname(__FILE__))
 
@@ -36,16 +35,19 @@ module Rakumarket
   end
 end
 
-class Hashie::Mash
-  # Converts all of the keys to strings, optionally formatting key name
-  def rubyify_keys!
-    keys.each{|k|
-      v = delete(k)
-      regular_writer(k.to_s.underscore, v)
-      v.rubyify_keys! if v.is_a?(Hash)
-      v.each{|p| p.rubyify_keys! if p.is_a?(Hash)} if v.is_a?(Array)
-    }
-    self
+class String
+  def blank?
+    self !~ /[^[:space:]]/
+  end
+  def present?
+    !blank?
+  end
+end
+
+class Hash
+  def slice(*keys)
+    keys.map! { |key| convert_key(key) } if respond_to?(:convert_key, true)
+    keys.each_with_object(self.class.new) { |k, hash| hash[k] = self[k] if has_key?(k) }
   end
 end
 
@@ -60,7 +62,6 @@ module Hashie::HashExtensions
     end
     self
   end
-
 end
 
 require File.join(directory, 'rakumarket', 'client')

@@ -22,7 +22,7 @@ describe Rakumarket do
       end
 
       it "returns a list of items" do
-        @items.should be_present
+        @items.should_not be_empty
       end
 
       it "returns items with attributes" do
@@ -30,7 +30,7 @@ describe Rakumarket do
       end
 
       it "returns items with rubyish attributes" do
-        @items.first.review_count.should be_present
+        @items.first.review_count.should_not be_nil
       end
 
       it "returns items with nested attributes" do
@@ -51,32 +51,32 @@ describe Rakumarket do
     context "given a search with parameters" do
       it "accepts rubyish parameter names" do
         items = Rakumarket.item_search("roomba", :must_have_image => true).items
-        items.should be_present
+        items.should_not be_empty
       end
 
       it "accepts nested parameters" do
         items = Rakumarket.item_search("roomba", :price => {:maximum => 30000} ).items
-        items.should be_present
+        items.should_not be_empty
       end
 
       it "accepts SQL-style order specification" do
         items = Rakumarket.item_search("roomba", :order => 'updated_at asc' ).items
-        items.should be_present
+        items.should_not be_empty
       end
 
       it "accepts case insensitive SQL-style order specification" do
         items = Rakumarket.item_search("roomba", :order => 'updated_at ASC' ).items
-        items.should be_present
+        items.should_not be_empty
       end
 
       it "accepts plain country names for international shipping" do
         items = Rakumarket.item_search("roomba", :shipping => {:must_ship_international => true, :country => 'usa'} ).items
-        items.should be_present
+        items.should_not be_empty
       end
 
       it "accepts plain prefecture names for next day shipping" do
         items = Rakumarket.item_search("roomba", :shipping => {:must_ship_next_day => true, :next_day_area => 'kanagawa'} ).items
-        items.should be_present
+        items.should_not be_empty
       end
 
       it "returns plain country names for international shipping" do
@@ -96,7 +96,7 @@ describe Rakumarket do
       end
 
       it "returns genre information" do
-        @genre_info.should be_present
+        @genre_info.should_not be_empty
       end
 
       it "returns an array of children" do
@@ -174,7 +174,7 @@ describe Rakumarket do
     context "given a search with parameters" do
       it "accepts rubyish parameter names" do
         response = Rakumarket.genre_search(0, :return_immediate_parent => false)
-        response.children.should be_present
+        response.children.should_not be_empty
       end
       it "returns the immediate parent" do
         response = Rakumarket.genre_search(204491, :return_immediate_parent => true)
