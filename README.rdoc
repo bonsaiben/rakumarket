@@ -1,4 +1,4 @@
-= Rakumarket {<img src="https://gemnasium.com/bonsaiben/rakumarket.png">}[https://gemnasium.com/bonsaiben/rakumarket]
+= Rakumarket {<img src="https://secure.travis-ci.org/bonsaiben/rakumarket.png">}[http://travis-ci.org/bonsaiben/rakumarket] {<img src="https://gemnasium.com/bonsaiben/rakumarket.png">}[https://gemnasium.com/bonsaiben/rakumarket]
 
 A reader-friendly Ruby abstraction of the Rakuten Market API.
 
