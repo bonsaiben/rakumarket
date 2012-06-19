@@ -7,7 +7,7 @@ describe Rakumarket do
     {:keep => "this", :drop => "that"}.slice(:keep).should eq({:keep => "this"})
   end
 
-  describe "GET item_search" do
+  describe "#item_search" do
     before do
       VCR.insert_cassette 'item_search', :record => :new_episodes
     end
