@@ -47,6 +47,11 @@ private
       transform_values! @response, response_values_to_transform
     end
 
+    def request_keys_to_transform; {} end
+    def request_values_to_transform; {} end
+    def response_keys_to_transform; {} end
+    def response_values_to_transform; {} end
+
     def transform_keys! hash, transformation_index
       transformation_index.each do |k,v|
         hash[v] = hash.delete(k) if hash.has_key?(k)
