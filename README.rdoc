@@ -55,7 +55,6 @@ A Rakuten developer ID is required.
 
 * HTTParty[https://github.com/jnunemaker/httparty]
 * Hashie::Mash[https://github.com/intridea/hashie]
-* ActiveSupport[https://github.com/rails/rails/tree/master/activesupport]
 
 
 
