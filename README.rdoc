@@ -37,11 +37,18 @@ A Rakuten developer ID is required.
   require 'rakumarket'
   Rakumarket.developer_id = 'your_developer_id'
 
-== Usage
+== Basic Usage
+
+Please see the wiki for a more comprehensive documentation.
 
 === {Item Search}[https://github.com/bonsaiben/rakumarket/wiki/Item-Search]
 
   Rakumarket.item_search "roomba", options
+
+=== {Genre Search}[https://github.com/bonsaiben/rakumarket/wiki/Genre-Search]
+
+  Rakumarket.genre_search
+
 
 
 == Todo
