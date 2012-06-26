@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = ">= 1.3.6"
 
-  s.add_dependency "hashie", ">= 0.1.3"
+  s.add_dependency "nibbler", "~> 1.3.0"
   s.add_dependency "httparty", ">= 0.1.0"
   s.add_development_dependency "bundler", ">= 1.0.0"
   s.add_development_dependency "rspec", "~> 2.6"

@@ -559,4 +559,172 @@ http_interactions:
         ZSI6IjIwMDctMDQtMTEifX19LCJTdGF0dXNNc2ciOiIifX0=
     http_version: 
   recorded_at: Tue, 19 Jun 2012 16:22:42 GMT
+- request:
+    method: get
+    uri: http://api.rakuten.co.jp/rws/3.0/json?developerId=<DEVELOPER_ID>&operation=GenreSearch&version=2007-04-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U2F0LCAyMyBKdW4gMjAxMiAwMTo1ODozOSBHTVQ=
+      !binary "U2VydmVy":
+      - !binary |-
+        QXBhY2hl
+      Content-Length:
+      - !binary |-
+        MzUw
+      !binary "VmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      Content-Type:
+      - !binary |-
+        dGV4dC9odG1sO2NoYXJzZXQ9VVRGLTg=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJCb2R5IjpudWxsLCJIZWFkZXIiOnsiU3RhdHVzIjoiQ2xpZW50RXJyb3Ii
+        LCJBcmdzIjp7IkFyZyI6eyJhcGlWZXJzaW9uIjp7ImNvbnRlbnQiOnRydWUs
+        InZhbHVlIjoiMzAifSwib3BlcmF0aW9uIjp7ImNvbnRlbnQiOnRydWUsInZh
+        bHVlIjoiR2VucmVTZWFyY2gifSwiZGV2ZWxvcGVySWQiOnsiY29udGVudCI6
+        dHJ1ZSwidmFsdWUiOiI8REVWRUxPUEVSX0lEPiJ9LCJ2ZXJzaW9uIjp7ImNv
+        bnRlbnQiOnRydWUsInZhbHVlIjoiMjAwNy0wNC0xMSJ9fX0sIlN0YXR1c01z
+        ZyI6ImdlbnJlSWTjg5Hjg6njg6Hjg7zjgr/jgYzmjIflrprjgZXjgozjgabj
+        gYTjgb7jgZvjgpPjgIIifX0=
+    http_version: 
+  recorded_at: Sat, 23 Jun 2012 01:58:39 GMT
+- request:
+    method: get
+    uri: http://api.rakuten.co.jp/rws/3.0/json?
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U2F0LCAyMyBKdW4gMjAxMiAxNTozMjowOCBHTVQ=
+      !binary "U2VydmVy":
+      - !binary |-
+        QXBhY2hl
+      Content-Length:
+      - !binary |-
+        MzEy
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      Content-Type:
+      - !binary |-
+        dGV4dC9odG1sO2NoYXJzZXQ9VVRGLTg=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJIZWFkZXIiOnsiU3RhdHVzIjoiQ2xpZW50RXJyb3IiLCJBcmdzIjp7IkFy
+        ZyI6eyJhcGlWZXJzaW9uIjp7ImNvbnRlbnQiOnRydWUsInZhbHVlIjoiMzAi
+        fSwib3BlcmF0aW9uIjp7ImNvbnRlbnQiOmZhbHNlLCJ2YWx1ZSI6IiJ9LCJk
+        ZXZlbG9wZXJJZCI6eyJjb250ZW50IjpmYWxzZSwidmFsdWUiOiIifX19LCJT
+        dGF0dXNNc2ciOiJkZXZlbG9wZXJJZOODkeODqeODoeODvOOCv+OBjOaMh+Wu
+        muOBleOCjOOBpuOBhOOBvuOBm+OCk+OAglxub3BlcmF0aW9u44OR44Op44Oh
+        44O844K/44GM5oyH5a6a44GV44KM44Gm44GE44G+44Gb44KT44CCIn19
+    http_version: 
+  recorded_at: Sat, 23 Jun 2012 15:32:08 GMT
+- request:
+    method: get
+    uri: http://api.rakuten.co.jp/rws/3.0/json?developerId=<DEVELOPER_ID>&genrePath=1&operation=GenreSearch&version=2007-04-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "RGF0ZQ==":
+      - !binary |-
+        VHVlLCAyNiBKdW4gMjAxMiAxNjowMTozMyBHTVQ=
+      !binary "U2VydmVy":
+      - !binary |-
+        QXBhY2hl
+      Content-Length:
+      - !binary |-
+        Mzkx
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      Content-Type:
+      - !binary |-
+        dGV4dC9odG1sO2NoYXJzZXQ9VVRGLTg=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJCb2R5IjpudWxsLCJIZWFkZXIiOnsiU3RhdHVzIjoiQ2xpZW50RXJyb3Ii
+        LCJBcmdzIjp7IkFyZyI6eyJhcGlWZXJzaW9uIjp7ImNvbnRlbnQiOnRydWUs
+        InZhbHVlIjoiMzAifSwib3BlcmF0aW9uIjp7ImNvbnRlbnQiOnRydWUsInZh
+        bHVlIjoiR2VucmVTZWFyY2gifSwiZGV2ZWxvcGVySWQiOnsiY29udGVudCI6
+        dHJ1ZSwidmFsdWUiOiI8REVWRUxPUEVSX0lEPiJ9LCJnZW5yZVBhdGgiOnsi
+        Y29udGVudCI6dHJ1ZSwidmFsdWUiOiIxIn0sInZlcnNpb24iOnsiY29udGVu
+        dCI6dHJ1ZSwidmFsdWUiOiIyMDA3LTA0LTExIn19fSwiU3RhdHVzTXNnIjoi
+        Z2VucmVJZOODkeODqeODoeODvOOCv+OBjOaMh+WumuOBleOCjOOBpuOBhOOB
+        vuOBm+OCk+OAgiJ9fQ==
+    http_version: 
+  recorded_at: Tue, 26 Jun 2012 16:01:33 GMT
+- request:
+    method: get
+    uri: http://api.rakuten.co.jp/rws/3.0/json?developerId=<DEVELOPER_ID>&genrePath=0&operation=GenreSearch&version=2007-04-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "RGF0ZQ==":
+      - !binary |-
+        VHVlLCAyNiBKdW4gMjAxMiAxNjowMTozMyBHTVQ=
+      !binary "U2VydmVy":
+      - !binary |-
+        QXBhY2hl
+      Content-Length:
+      - !binary |-
+        Mzkx
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      Content-Type:
+      - !binary |-
+        dGV4dC9odG1sO2NoYXJzZXQ9VVRGLTg=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJCb2R5IjpudWxsLCJIZWFkZXIiOnsiU3RhdHVzIjoiQ2xpZW50RXJyb3Ii
+        LCJBcmdzIjp7IkFyZyI6eyJhcGlWZXJzaW9uIjp7ImNvbnRlbnQiOnRydWUs
+        InZhbHVlIjoiMzAifSwib3BlcmF0aW9uIjp7ImNvbnRlbnQiOnRydWUsInZh
+        bHVlIjoiR2VucmVTZWFyY2gifSwiZGV2ZWxvcGVySWQiOnsiY29udGVudCI6
+        dHJ1ZSwidmFsdWUiOiI8REVWRUxPUEVSX0lEPiJ9LCJnZW5yZVBhdGgiOnsi
+        Y29udGVudCI6dHJ1ZSwidmFsdWUiOiIwIn0sInZlcnNpb24iOnsiY29udGVu
+        dCI6dHJ1ZSwidmFsdWUiOiIyMDA3LTA0LTExIn19fSwiU3RhdHVzTXNnIjoi
+        Z2VucmVJZOODkeODqeODoeODvOOCv+OBjOaMh+WumuOBleOCjOOBpuOBhOOB
+        vuOBm+OCk+OAgiJ9fQ==
+    http_version: 
+  recorded_at: Tue, 26 Jun 2012 16:01:33 GMT
 recorded_with: VCR 2.2.0

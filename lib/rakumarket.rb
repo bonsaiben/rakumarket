@@ -1,23 +1,24 @@
 require 'httparty'
-require 'hashie'
+require 'nibbler/json'
 
 directory = File.expand_path(File.dirname(__FILE__))
 
-Hash.send :include, Hashie::HashExtensions
-
 module Rakumarket
 
-  def self.item_search(keyword, options={})
-    Rakumarket::ItemSearchClient.new.request({:keyword => keyword}.merge(options).hashie_symbolify_keys!)
+  def self.item_search(keyword, params={})
+    params = {:keyword => keyword}.merge(params).symbolify_keys!
+    ItemSearchClient.request(params)
   end
 
   def self.genre_search(genre_id=0, options={})
-    Rakumarket::GenreSearchClient.new.request({:genre_id => genre_id}.merge(options).hashie_symbolify_keys!)
+    params = {:genre_id => genre_id}.merge(options).symbolify_keys!
+    GenreSearchClient.request(params)
   end
 
-  #def self.item_code_search(item_code, options={})
-  #  Rakumarket::ItemCodeSearchClient.new.request({:item_code => item_code}.merge(options).hashie_symbolify_keys!)
-  #end
+  def self.item_lookup(item_code, options={})
+    params = {:code => item_code}.merge(options).symbolify_keys!
+    ItemLookupClient.request(params)
+  end
 
 
   class << self
@@ -30,7 +31,7 @@ module Rakumarket
 
     def initialize(data)
       @data = data
-      super data.status_msg
+      super data[:status_msg]
     end
   end
 end
@@ -49,12 +50,8 @@ class Hash
     keys.map! { |key| convert_key(key) } if respond_to?(:convert_key, true)
     keys.inject(self.class.new) { |hash, k| hash[k] = self[k] if has_key?(k); hash }
   end
-end
 
-module Hashie::HashExtensions
-  # Destructively convert all of the keys of a Hash
-  # to their symbol representations.
-  def hashie_symbolify_keys!
+  def symbolify_keys!
     self.keys.each do |k|
       unless Symbol === k
         self[k.to_sym] = self.delete(k)
@@ -64,6 +61,7 @@ module Hashie::HashExtensions
   end
 end
 
+require File.join(directory, 'rakumarket', 'constants')
+require File.join(directory, 'rakumarket', 'spitter')
+require File.join(directory, 'rakumarket', 'models')
 require File.join(directory, 'rakumarket', 'client')
-require File.join(directory, 'rakumarket', 'item_search_client')
-require File.join(directory, 'rakumarket', 'genre_search_client')

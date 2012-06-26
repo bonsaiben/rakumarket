@@ -90,28 +90,6 @@ describe Rakumarket do
       end
     end
 
-    context "given a search with genre information" do
-      before do
-        @genre_info = Rakumarket.item_search("roomba", :include_genre_info => true).genre_info
-      end
-
-      it "returns genre information" do
-        @genre_info.should_not be_empty
-      end
-
-      it "returns an array of children" do
-        @genre_info.children.should be_a(Array)
-      end
-
-      it "returns a single parent" do
-        @genre_info.parent.should_not be_a(Array)
-      end
-
-      it "returns the current" do
-        @genre_info.current.should_not be_a(Array)
-      end
-    end
-
     context "given a fruitless search" do
       it "raises an error " do
         expect{ 
@@ -135,17 +113,14 @@ describe Rakumarket do
       before do
         @response = Rakumarket.genre_search
       end
-      it "returns a list of items" do
+      it "returns a list of genres" do
         @response.children.should be_a(Array)
       end
       it "returns a single parent" do
         @response.parent.should_not be_a(Array)
       end
-      it "returns a single current" do
-        @response.current.should_not be_a(Array)
-      end
-      it "returns genres with rubyish attributes" do
-        @response.children.first.genre_name.should eq('CD・DVD・楽器')
+      it "returns genres with attributes" do
+        @response.children.first.name.should eq('CD・DVD・楽器')
       end
     end
 
@@ -153,21 +128,18 @@ describe Rakumarket do
       before do
         @response = Rakumarket.genre_search(101240)
       end
-      it "returns a list of items" do
+      it "returns a list of genres" do
         @response.children.should be_a(Array)
       end
       it "returns a single parent" do
         @response.parent.should_not be_a(Array)
       end
-      it "returns a single current" do
-        @response.current.should_not be_a(Array)
-      end
-      it "returns genres with rubyish attributes" do
-        @response.children.first.genre_name.should eq('DVD')
+      it "returns genres with attributes" do
+        @response.children.first.name.should eq('DVD')
       end
       it "returns the topmost parent" do
         response = Rakumarket.genre_search(204491)
-        response.parent.genre_name.should eq('家電')
+        response.parent.name.should eq('家電')
       end
     end
 
@@ -178,7 +150,7 @@ describe Rakumarket do
       end
       it "returns the immediate parent" do
         response = Rakumarket.genre_search(204491, :return_immediate_parent => true)
-        response.parent.genre_name.should eq('生活家電')
+        response.parent.name.should eq('生活家電')
       end
     end
 
@@ -187,6 +159,30 @@ describe Rakumarket do
         expect{ 
           items = Rakumarket.genre_search("askdjfalsjdf")
         }.to raise_error(Rakumarket::RakumarketError)
+      end
+    end
+  end
+
+  describe "#item_lookup" do
+    before do
+      VCR.insert_cassette 'item_lookup', :record => :new_episodes
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    context "given a simple search" do
+      before do
+        @response = Rakumarket.item_lookup "act-corp:10000580"
+      end
+
+      it "returns an item" do
+        @response.should be_a(Rakumarket::Item)
+      end
+
+      it "returns an item with item attributes" do
+        @response.code.should eq("act-corp:10000580")
       end
     end
   end
