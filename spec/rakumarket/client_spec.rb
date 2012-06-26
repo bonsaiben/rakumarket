@@ -14,6 +14,9 @@ end
 
 
 describe Rakumarket::ItemSearchClient do
+  before do
+    Rakumarket.developer_id = "foobar"
+  end
 
   describe "parameters" do
     it "should have an operation by default" do
@@ -28,7 +31,7 @@ describe Rakumarket::ItemSearchClient do
 
     it "should have a developer_id by default" do
       params = {}
-      Rakumarket::ItemSearchClient.new(params).parse['developerId'].should eq(ENV['DEVELOPER_ID'])
+      Rakumarket::ItemSearchClient.new(params).parse['developerId'].should eq(Rakumarket.developer_id)
     end
 
     it "should transform a keyword" do
@@ -168,6 +171,9 @@ describe Rakumarket::ItemSearchClient do
   end
 
   describe Rakumarket::GenreSearchClient do
+    before do
+      Rakumarket.developer_id = "foobar"
+    end
 
     describe "parameters" do
       it "should have an operation by default" do
@@ -182,7 +188,7 @@ describe Rakumarket::ItemSearchClient do
 
       it "should have a developer_id by default" do
         params = {}
-        Rakumarket::GenreSearchClient.new(params).parse['developerId'].should eq(ENV['DEVELOPER_ID'])
+        Rakumarket::GenreSearchClient.new(params).parse['developerId'].should eq(Rakumarket.developer_id)
       end
     end
 
@@ -198,6 +204,9 @@ describe Rakumarket::ItemSearchClient do
   end
 
   describe Rakumarket::ItemLookupClient do
+    before do
+      Rakumarket.developer_id = "foobar"
+    end
 
     it "should transform code to itemCode" do
       params = {:code => "abc"}
@@ -234,7 +243,7 @@ describe Rakumarket::ItemSearchClient do
       end
 
       it "should have a developer_id by default" do
-        @request.parse['developerId'].should eq(ENV['DEVELOPER_ID'])
+        @request.parse['developerId'].should eq(Rakumarket.developer_id)
       end
     end
 
