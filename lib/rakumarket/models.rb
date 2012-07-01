@@ -1,30 +1,49 @@
 # -*- encoding: utf-8 -*-
 
+class NibblerJSON
+  def self.inspect_attributes
+    attributes = {}
+    @rules.each do |k,v|
+      attributes[k] = if v[1].respond_to?(:inspect_attributes)
+        v[2] ? [v[1].inspect_attributes] : v[1].inspect_attributes
+      else
+        v[1].respond_to?(:values) ? v[1].values.values.join("|") : ""
+      end
+    end
+    attributes
+  end
+end
+
 module Rakumarket
   class Base < NibblerJSON
   end
 
   class OneToTrue
-    def self.parse(val) {"1" => true, "0" => false}[val.to_s] end
+    def self.values; {"1" => true, "0" => false} end
+    def self.parse(val) values[val.to_s] end
   end
 
   class ZeroToTrue
-    def self.parse(val) {"0" => true, "1" => false}[val.to_s] end
+    def self.values; {"0" => true, "1" => false} end
+    def self.parse(val) values[val.to_s] end
   end
 
   class ParseTime < Time
+    def self.values; {"accepts" => self.superclass.name} end
     def self.parse(val) super unless val.blank? end
   end
 
   class InternationalDeliveryCountryList
+    def self.values; INTERNATIONAL_DELIVERY_AREA_NAMES end
     def self.parse(val)
-      val.split('/').map{|a| INTERNATIONAL_DELIVERY_AREA_NAMES[a] || a} if val.respond_to?(:split)
+      val.split('/').map{|a| values[a] || a} if val.respond_to?(:split)
     end
   end
 
   class NextDayAreaList
+    def self.values; ASURAKU_DELIVERY_AREA_NAMES end
     def self.parse(val)
-      val.split('/').map{|a| ASURAKU_DELIVERY_AREA_NAMES[a] || a} if val.respond_to?(:split)
+      val.split('/').map{|a| values[a] || a} if val.respond_to?(:split)
     end
   end
 
@@ -47,6 +66,7 @@ module Rakumarket
     element 'itemPrice' => :price
     element 'itemCaption' => :caption
     element 'itemUrl' => :url
+    element 'rank' => :rank
     element 'genreId' => :genre_id
     element 'affiliateUrl' => :affiliate_url
     element 'imageFlag' => :has_image, :with => OneToTrue
@@ -107,6 +127,11 @@ module Rakumarket
   end
 
   class Genre < Base
+    element 'genreId' => :id
+    element 'genreName' => :name
+  end
+
+  class GenreFamily < Base
     element 'genreId' => :id
     element 'genreName' => :name
     element :parent, :with => Genre
