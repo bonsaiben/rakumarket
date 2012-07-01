@@ -101,7 +101,7 @@ item_list.items.first.price
  => 30500
 </code></pre>
 
-<p>Here is a full yaml representation of ItemList attributes and values:</p>
+<p>Here is a full yaml representation of <code>ItemList</code> attributes and values:</p>
 <pre><code>> puts Rakumarket::ItemList.inspect_attributes.to_yaml
 ---
 :total_item_count: ''
@@ -181,7 +181,7 @@ item.shipping.international?
  => true
 </code></pre>
 
-<p>Here is a full yaml representation of Item attributes and values:</p>
+<p>Here is a full yaml representation of <code>Item</code> attributes and values:</p>
 <pre><code>> puts Rakumarket::Item.inspect_attributes.to_yaml
 ---
 :name: ''
@@ -219,6 +219,58 @@ item.shipping.international?
   :next_day: true|false
   :next_day_areas: all|hokkaido|hokkaido|tohoku|aomori|iwate|miyagi|akita|yamagata|fukushima|kanto|ibaraki|tochigi|gunma|saitama|chiba|tokyo|kanagawa|koshinetsu|niigata|yamanashi|nagano|hokuriku|toyama|ishikawa|fukui|tokai|gifu|shizuoka|aichi|mie|kansai|shiga|kyoto|osaka|hyogo|nara|wakayama|chugoku|tottori|shimane|okayama|hiroshima|yamaguchi|shikoku|tokushima|kagawa|ehime|kochi|kyushu|fukuoka|saga|nagasaki|kumamoto|ooita|miyaza|kagoshima|okinawa|okinawa
 </code></pre>
+
+
+
+<h3>GenreSearch</h3>
+
+<p>Returns genre information by genre id including parent and descendent genres.</p>
+
+<pre><code>genre = Rakumarket.genre_search "559887", options</code></pre>
+
+<h4>Request</h4>
+
+<p><code>Rakumarket.genre_search</code> takes a hash of request options, for example:</p>
+
+<pre><code>{:return_immediate_parent => true}</code></pre>
+
+<p>Here is a full yaml representation of accepted keys and values for the options hash:</p>
+
+<pre><code>> puts Rakumarket::GenreSearchClient.inspect_options.to_yaml
+---
+:return_immediate_parent: true|false
+</code></pre>
+
+<h4>Response</h4>
+
+<p><code>Rakumarket.genre_search</code> returns a <code>Rakumarket::GenreFamily</code> object representing a genre and its ascending and descending genres, for example:</p>
+
+<pre><code>genre.id
+ => "559887"
+genre.name
+ => "500ml"
+genre.parent.id
+ => "559886"
+genre.children.size
+ => 5
+genre.children.first.id
+ => "559887"
+</code></pre>
+
+<p>Here is a full yaml representation of <code>Item</code> attributes and values:</p>
+<pre><code>> puts Rakumarket::GenreFamily.inspect_attributes.to_yaml
+---
+:id: ''
+:name: ''
+:parent:
+  :id: ''
+  :name: ''
+:children:
+- :id: ''
+  :name: ''
+</code></pre>
+
+
 
 <h3>Rather Drive Stick?</h3>
 
