@@ -43,7 +43,7 @@ $ git checkout gh-pages
 <p>Searches for items matching the given keyword.</p>
 <pre><code>item_list = Rakumarket.item_search "keyword", options</code></pre>
 <h4>Options</h4>
-<p>A hash of options, for example</p>
+<p>A hash of request options, for example:</p>
 <pre><code>{:price => {:maximum => 30000}, :must_be_available => true}</code></pre>
 <p>Here is a full yaml representation of accepted keys and values for the options hash:</p>
 <pre><code>> puts Rakumarket::ItemSearchClient.inspect_options.to_yaml
@@ -82,17 +82,17 @@ $ git checkout gh-pages
 
 <h4>Response</h4>
 <p><code>Rakumarket.item_search</code> returns a <code>Rakumarket::ItemList</code> object, for example:</p>
-<pre><code>> item_list.page_count
+<pre><code>item_list.page_count
  => 32
-> item_list.page
+item_list.page
  => 1
-> item_list.items.size
+item_list.items.size
  => 30
-> item_list.items.first.class
+item_list.items.first.class
  => Rakumarket::Item
-> item_list.items.first.name
+item_list.items.first.name
  => "【現定数在庫有り】ルンバ 530 新品 楽天最安挑戦価格 安心の3年保証 オマケ付き ルンバ530 ホワイト iRobot Roomba 正規品 【c_1011】【2sp_120528_b】"
-> item_list.items.first.price
+item_list.items.first.price
  => 30500
 </code></pre>
 
