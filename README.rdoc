@@ -2,6 +2,8 @@
 
 A reader-friendly Ruby abstraction of the Rakuten Market API.
 
+See the {Github page}[http://bonsaiben.github.com/rakumarket] for detailed usage information.
+
 
 == Description
 
@@ -42,31 +44,25 @@ Please see the wiki for a more comprehensive documentation.
 
 === Item Search
 
-  Rakumarket.item_search "roomba", options
+  Rakumarket.item_search "roomba", :price => {:maximum => 30000}
 
 === Item Lookup
 
-  Rakumarket.item_lookup "item_code", options
+  Rakumarket.item_lookup "act-corp:10000580"
 
 === Genre Search
 
-  Rakumarket.genre_search "genre_id", options
+  Rakumarket.genre_search
 
+=== Item Ranking
 
-
+  Rakumarket.item_ranking :sex => :male, :age_range => (20..29)
 
 
 == Todo
 
 * remaining APIs
 * RDoc markup
-
-
-
-== Dependencies
-
-* HTTParty[https://github.com/jnunemaker/httparty]
-* Nibbler[https://github.com/mislav/nibbler]
 
 
 
