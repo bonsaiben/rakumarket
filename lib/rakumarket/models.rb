@@ -78,7 +78,6 @@ module Rakumarket
     def shop_of_the_year?; shop_of_the_year end
 
     def self.parse(response)
-      response = response.dup['Body']['ItemCodeSearch']['Items']['Item'].first if response['Body'] && response['Body']['ItemCodeSearch']
       response['shop'] = {
         'shopName' => response.delete('shopName'),
         'shopCode' => response.delete('shopCode'),
@@ -102,7 +101,6 @@ module Rakumarket
     elements :items, :with => Item
 
     def self.parse(response)
-      response = response.dup['Body']['ItemSearch']
       response['items'] = response.delete('Items')['Item']
       super(response)
     end
@@ -115,7 +113,6 @@ module Rakumarket
     elements 'child' => :children, :with => Genre
 
     def self.parse(response)
-      response = response.dup['Body']['GenreSearch'] if response['Body']
       response['genreId'] = response['current'].first['genreId'] if response['current'] && response['current'].any?
       response['genreName'] = response['current'].first['genreName'] if response['current'] && response['current'].any?
       super(response)

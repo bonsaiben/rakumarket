@@ -108,6 +108,7 @@ private
 
     def request
       response = super
+      response = response.dup['Body']['ItemSearch']
       ItemList.parse(response)
     end
 
@@ -125,6 +126,7 @@ private
 
     def request
       response = super
+      response = response.dup['Body']['GenreSearch'] if response['Body']
       Genre.parse(response)
     end
 
@@ -141,6 +143,7 @@ private
 
     def request
       response = super
+      response = response.dup['Body']['ItemCodeSearch']['Items']['Item'].first if response['Body'] && response['Body']['ItemCodeSearch']
       Item.parse(response)
     end
   end
