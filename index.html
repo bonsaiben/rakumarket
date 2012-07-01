@@ -28,18 +28,22 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>Welcome.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Rakumarket is a Ruby abstraction of the <a href="https://webservice.rakuten.co.jp/document/#ichibaApi">Rakuten Web Service 楽天市場系API</a>.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<h4>API Contents</h4>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<ul>
+  <li><a href="#item_search">ItemSearch</a></li>
+  <li><a href="#item_lookup">ItemLookup</a></li>
+  <li><a href="#genre_search">GenreSearch</a></li>
+  <li><a href="#item_ranking">ItemRanking</a></li>
+</ul>
 
-<h3>ItemSearch</h3>
+
+
+<h3 id="item_search">ItemSearch</h3>
 
 <p>Searches for items matching the given keyword.</p>
 
@@ -146,7 +150,7 @@ item_list.items.first.price
 
 
 
-<h3>ItemLookup</h3>
+<h3 id="item_lookup">ItemLookup</h3>
 
 <p>Finds an item by its item code.</p>
 
@@ -222,7 +226,7 @@ item.shipping.international?
 
 
 
-<h3>GenreSearch</h3>
+<h3 id="genre_search">GenreSearch</h3>
 
 <p>Returns genre information by genre id including parent and descendent genres.</p>
 
@@ -269,6 +273,45 @@ genre.children.first.id
 - :id: ''
   :name: ''
 </code></pre>
+
+
+
+<h3 id="item_ranking">ItemRanking</h3>
+
+<p>Returns a ranked list of top-selling items within a given genre and/or demographic.</p>
+
+<pre><code>item_list = Rakumarket.item_ranking options</code></pre>
+
+<h4>Request</h4>
+
+<p><code>Rakumarket.item_ranking</code> takes a hash of request options, for example:</p>
+
+<pre><code>{:age_range => (20..29), :sex => :female}</code></pre>
+
+<p>Here is a full yaml representation of accepted keys and values for the options hash:</p>
+
+<pre><code>> puts Rakumarket::ItemRankingClient.inspect_options.to_yaml
+---
+:return_immediate_parent: true|false
+</code></pre>
+
+<h4>Response</h4>
+
+<p><code>Rakumarket.genre_search</code> returns a <code>Rakumarket::GenreFamily</code> object representing a genre and its ascending and descending genres, for example:</p>
+
+<pre><code>genre.id
+ => "559887"
+genre.name
+ => "500ml"
+genre.parent.id
+ => "559886"
+genre.children.size
+ => 5
+genre.children.first.id
+ => "559887"
+</code></pre>
+
+<p>See ItemSearch for a full representation of <code>ItemList</code> attributes and values.</p>
 
 
 
