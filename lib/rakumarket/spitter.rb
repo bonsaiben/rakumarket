@@ -25,6 +25,18 @@ module SpitterMethods
   # Process data by creating a new instance
   def parse(params) new(params).parse end
 
+  def inspect_options
+    options = {}
+    @rules.each do |k,v|
+      options[k] = if v[1].respond_to?(:inspect_options)
+        v[2] ? [v[1].inspect_options] : v[1].inspect_options
+      else
+        v[1].respond_to?(:values) ? v[1].values.keys.join('|') : ""
+      end
+    end
+    options
+  end
+
   private
 
   # Make subclasses inherit the parsing rules
