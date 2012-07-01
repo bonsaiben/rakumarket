@@ -40,7 +40,7 @@ $ git checkout gh-pages
 <p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
 
 <h3>ItemSearch</h3>
-<pre><code>Rakumarket.item_search "item_name", options</code></pre>
+<pre><code>Rakumarket.item_search "keyword", options</code></pre>
 <h4>Options</h4>
 <p>A hash of options, for example</p>
 <pre><code>{:price => {:maximum => 30000}, :must_be_available => true}</code></pre>
@@ -56,161 +56,31 @@ $ git checkout gh-pages
 - :minimum: ''
   :maximum: ''
 :shipping:
-- :must_ship_international:
-  - true
-  - false
-  :country:
-  - worldwide
-  - usa
-  - argentina
-  - brazil
-  - canada
-  - mexico
-  - austria
-  - belgium
-  - denmark
-  - france
-  - germany
-  - greece
-  - italy
-  - morocco
-  - netherlands
-  - poland
-  - portugal
-  - russia
-  - spain
-  - sweden
-  - switzerland
-  - turkey
-  - england
-  - australia
-  - china
-  - hong kong
-  - india
-  - indonesia
-  - south korea
-  - malaysia
-  - new zealand
-  - philipines
-  - singapore
-  - taiwan
-  - thailand
-  - vietnam
-  :must_ship_next_day:
-  - true
-  - false
-  :next_day_area:
-  - all
-  - hokkaido
-  - tohoku
-  - aomori
-  - iwate
-  - miyagi
-  - akita
-  - yamagata
-  - fukushima
-  - kanto
-  - ibaraki
-  - tochigi
-  - gunma
-  - saitama
-  - chiba
-  - tokyo
-  - kanagawa
-  - koshinetsu
-  - niigata
-  - yamanashi
-  - nagano
-  - hokuriku
-  - toyama
-  - ishikawa
-  - fukui
-  - tokai
-  - gifu
-  - shizuoka
-  - aichi
-  - mie
-  - kansai
-  - shiga
-  - kyoto
-  - osaka
-  - hyogo
-  - nara
-  - wakayama
-  - chugoku
-  - tottori
-  - shimane
-  - okayama
-  - hiroshima
-  - yamaguchi
-  - shikoku
-  - tokushima
-  - kagawa
-  - ehime
-  - kochi
-  - kyushu
-  - fukuoka
-  - saga
-  - nagasaki
-  - kumamoto
-  - ooita
-  - miyaza
-  - kagoshima
-  - okinawa
-  :must_include_cost:
-  - true
-  - false
+- :must_ship_international: true|false
+  :country: worldwide|usa|argentina|brazil|canada|mexico|austria|belgium|denmark|france|germany|greece|italy|morocco|netherlands|poland|portugal|russia|spain|sweden|switzerland|turkey|england|australia|china|hong
+    kong|india|indonesia|south korea|malaysia|new zealand|philipines|singapore|taiwan|thailand|vietnam
+  :must_ship_next_day: true|false
+  :next_day_area: all|hokkaido|tohoku|aomori|iwate|miyagi|akita|yamagata|fukushima|kanto|ibaraki|tochigi|gunma|saitama|chiba|tokyo|kanagawa|koshinetsu|niigata|yamanashi|nagano|hokuriku|toyama|ishikawa|fukui|tokai|gifu|shizuoka|aichi|mie|kansai|shiga|kyoto|osaka|hyogo|nara|wakayama|chugoku|tottori|shimane|okayama|hiroshima|yamaguchi|shikoku|tokushima|kagawa|ehime|kochi|kyushu|fukuoka|saga|nagasaki|kumamoto|ooita|miyaza|kagoshima|okinawa
+  :must_include_cost: true|false
 :affiliate_id: ''
 :call_back: ''
 :items_per_page: ''
 :shop_code: ''
 :genre_id: ''
-:order:
-- affiliate_rate
-- affiliate_rate asc
-- affiliate_rate desc
-- review_count
-- review_count asc
-- review_count desc
-- review_average
-- review_average asc
-- review_average desc
-- price
-- price asc
-- price desc
-- updated_at
-- updated_at asc
-- updated_at desc
-:must_be_available:
-- true
-- false
-:deep_search:
-- true
-- false
-:mobile:
-- true
-- false
-:must_have_image:
-- true
-- false
-:or_search:
-- true
-- false
+:order: affiliate_rate|affiliate_rate asc|affiliate_rate desc|review_count|review_count
+  asc|review_count desc|review_average|review_average asc|review_average desc|price|price
+  asc|price desc|updated_at|updated_at asc|updated_at desc
+:must_be_available: true|false
+:deep_search: true|false
+:mobile: true|false
+:must_have_image: true|false
+:or_search: true|false
 :exclude_keyword: ''
-:include_genre_info:
-- true
-- false
-:purchase_type:
-- normal
-- regular
-- distribution
-:must_have_point_multiplication:
-- true
-- false
+:include_genre_info: true|false
+:purchase_type: normal|regular|distribution
+:must_have_point_multiplication: true|false
 :point_multiplication_factor: ''
-:must_accept_credit_cards:
-- true
-- false
+:must_accept_credit_cards: true|false
 </code></pre>
 
 
