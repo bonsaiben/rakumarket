@@ -2,14 +2,6 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe Rakumarket::ItemList do
-  describe ".inspect_attributes" do
-    it "return the available attributes" do
-      Rakumarket::ItemList.inspect_attributes.should eq(
-        {:total_item_count=>"", :page_count=>"", :page=>"", :items=>[{:name=>"", :catchphrase=>"", :code=>"", :price=>"", :caption=>"", :url=>"", :rank=>"", :genre_id=>"", :affiliate_url=>"", :has_image=>"true|false", :small_image_url=>"", :medium_image_url=>"", :available=>"true|false", :tax_included=>"true|false", :credit_cards_accepted=>"true|false", :shop_of_the_year=>"true|false", :affiliate_rate=>"", :start_time=>"Time", :end_time=>"Time", :review_count=>"", :review_average=>"", :point_multiplication_factor=>"", :point_multiplication_start_time=>"Time", :point_multiplication_end_time=>"Time", :shop=>{:name=>"", :code=>"", :url=>""}, :shipping=>{:cost_included=>"true|false", :international=>"true|false", :countries=>"worldwide|usa|argentina|brazil|canada|mexico|austria|belgium|denmark|france|germany|greece|italy|morocco|netherlands|poland|portugal|russia|spain|sweden|switzerland|turkey|england|australia|china|hong kong|india|indonesia|south korea|malaysia|new zealand|philipines|singapore|taiwan|thailand|vietnam", :next_day=>"true|false", :next_day_areas=>"all|hokkaido|hokkaido|tohoku|aomori|iwate|miyagi|akita|yamagata|fukushima|kanto|ibaraki|tochigi|gunma|saitama|chiba|tokyo|kanagawa|koshinetsu|niigata|yamanashi|nagano|hokuriku|toyama|ishikawa|fukui|tokai|gifu|shizuoka|aichi|mie|kansai|shiga|kyoto|osaka|hyogo|nara|wakayama|chugoku|tottori|shimane|okayama|hiroshima|yamaguchi|shikoku|tokushima|kagawa|ehime|kochi|kyushu|fukuoka|saga|nagasaki|kumamoto|ooita|miyaza|kagoshima|okinawa|okinawa"}}]}
-      )
-    end
-  end
-
   describe ".parse" do
     before do
       @response = {"Items" => {"Item" => [{"shopOfTheYearFlag" => "0", "pointRate" => "2", "affiliateRate" => "435", "shipOverseasFlag" => "1", "asurakuFlag" => "1", "endTime" => "2012-02-05 14:23", "taxFlag" => "1", "startTime" => "2000-01-01 12:00", "itemCaption" => "thecaption", "catchcopy" => "great item", "mediumImageUrl" => "themediumimage", "imageFlag" => "0", "availability" => "0", "itemCode" => "abc123", "postageFlag" => "0", "itemName" => "Roomba", "rank" => "1", "smallImageUrl" => "thesmallimage", "itemPrice" => "2000", "pointRateEndTime" => "1999-12-30 09:01", "shopCode" => "theshopcode", "affiliateUrl" => "theaffiliateurl", "shopName" => "theshopname", "asurakuArea" => "神奈川県/滋賀県", "reviewCount" => "3", "shopUrl" => "theshopurl", "creditCardFlag" => "0", "reviewAverage" => "4", "shipOverseasArea" => "フランス/イタリア", "genreId" => "23", "pointRateStartTime" => "2007-03-03 03:33", "itemUrl" => "theurl"}]}, "pageCount" => 100, "hits" => 30, "last" => 30, "count" => 3507, "page" => 1, "carrier" => 0, "first" => 1}
@@ -223,14 +215,6 @@ describe Rakumarket::ItemList do
 end
 
 describe Rakumarket::GenreFamily do
-  describe ".inspect_attributes" do
-    it "return the available attributes" do
-      Rakumarket::GenreFamily.inspect_attributes.should eq(
-        {:id=>"", :name=>"", :parent=>{:id=>"", :name=>""}, :children=>[{:id=>"", :name=>""}]}
-      )
-    end
-  end
-
   describe ".parse" do
     context "root" do
       before do

@@ -14,14 +14,6 @@ end
 
 
 describe Rakumarket::ItemSearchClient do
-  describe ".inspect_options" do
-    it "returns the available parameters" do
-      Rakumarket::ItemSearchClient.inspect_options.should eq(
-        {:developer_id=>"", :operation=>"", :version=>"", :keyword=>"", :page=>"", :price=>[{:minimum=>"", :maximum=>""}], :shipping=>[{:must_ship_international=>"true|false", :country=>"worldwide|usa|argentina|brazil|canada|mexico|austria|belgium|denmark|france|germany|greece|italy|morocco|netherlands|poland|portugal|russia|spain|sweden|switzerland|turkey|england|australia|china|hong kong|india|indonesia|south korea|malaysia|new zealand|philipines|singapore|taiwan|thailand|vietnam", :must_ship_next_day=>"true|false", :next_day_area=>"all|hokkaido|tohoku|aomori|iwate|miyagi|akita|yamagata|fukushima|kanto|ibaraki|tochigi|gunma|saitama|chiba|tokyo|kanagawa|koshinetsu|niigata|yamanashi|nagano|hokuriku|toyama|ishikawa|fukui|tokai|gifu|shizuoka|aichi|mie|kansai|shiga|kyoto|osaka|hyogo|nara|wakayama|chugoku|tottori|shimane|okayama|hiroshima|yamaguchi|shikoku|tokushima|kagawa|ehime|kochi|kyushu|fukuoka|saga|nagasaki|kumamoto|ooita|miyaza|kagoshima|okinawa", :must_include_cost=>"true|false"}], :affiliate_id=>"", :call_back=>"", :items_per_page=>"", :shop_code=>"", :genre_id=>"", :order=>"affiliate_rate|affiliate_rate asc|affiliate_rate desc|review_count|review_count asc|review_count desc|review_average|review_average asc|review_average desc|price|price asc|price desc|updated_at|updated_at asc|updated_at desc", :must_be_available=>"true|false", :deep_search=>"true|false", :mobile=>"true|false", :must_have_image=>"true|false", :or_search=>"true|false", :exclude_keyword=>"", :include_genre_info=>"true|false", :purchase_type=>"normal|regular|distribution", :must_have_point_multiplication=>"true|false", :point_multiplication_factor=>"", :must_accept_credit_cards=>"true|false"}
-      )
-    end
-  end
-
   describe "parameters" do
     it "should have an operation by default" do
       params = {}
@@ -176,14 +168,6 @@ describe Rakumarket::ItemSearchClient do
 end
 
 describe Rakumarket::GenreSearchClient do
-  describe ".inspect_options" do
-    it "returns the available parameters" do
-      Rakumarket::GenreSearchClient.inspect_options.should eq(
-        {:developer_id=>"", :operation=>"", :version=>"", :genre_id=>"", :return_immediate_parent=>"true|false"}
-      )
-    end
-  end
-
   describe "parameters" do
     it "should have an operation by default" do
       params = {}
@@ -213,14 +197,6 @@ describe Rakumarket::GenreSearchClient do
 end
 
 describe Rakumarket::ItemLookupClient do
-  describe ".inspect_options" do
-    it "returns the available parameters" do
-      Rakumarket::ItemLookupClient.inspect_options.should eq(
-        {:developer_id=>"", :operation=>"", :version=>"", :code=>"", :mobile=>"true|false"}
-      )
-    end
-  end
-
   it "should transform code to itemCode" do
     params = {:code => "abc"}
     Rakumarket::ItemLookupClient.new(params).parse['itemCode'].should eq("abc")
@@ -262,14 +238,6 @@ describe Rakumarket::ItemLookupClient do
 end
 
 describe Rakumarket::ItemRankingClient do
-  describe ".inspect_options" do
-    it "returns the available parameters" do
-      Rakumarket::ItemRankingClient.inspect_options.should eq(
-        {:developer_id=>"", :operation=>"", :version=>"", :genre_id=>"", :age_range=>"10..19|20..29|30..39|40..49|50..120", :sex=>"male|female", :mobile=>"true|false"}
-      )
-    end
-  end
-
   it "should transform genre_id to genreId" do
     params = {:genre_id => "abc"}
     Rakumarket::ItemRankingClient.new(params).parse['genreId'].should eq("abc")
