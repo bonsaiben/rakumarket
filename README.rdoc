@@ -52,21 +52,15 @@ Please see the wiki for a more comprehensive documentation.
 
   Rakumarket.genre_search "genre_id", options
 
+=== Genre Search
 
-
+  Rakumarket.item_ranking :sex => :male, :age_range => (10..19)
 
 
 == Todo
 
 * remaining APIs
 * RDoc markup
-
-
-
-== Dependencies
-
-* HTTParty[https://github.com/jnunemaker/httparty]
-* Nibbler[https://github.com/mislav/nibbler]
 
 
 
