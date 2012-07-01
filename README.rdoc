@@ -2,6 +2,8 @@
 
 A reader-friendly Ruby abstraction of the Rakuten Market API.
 
+See the {Github page}[http://bonsaiben.github.com/rakumarket] for detailed usage information.
+
 
 == Description
 
