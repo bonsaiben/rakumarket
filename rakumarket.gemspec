@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "nibbler", "~> 1.3.0"
   s.add_dependency "httparty", ">= 0.1.0"
+  s.add_dependency "oj"
   s.add_development_dependency "bundler", ">= 1.0.0"
   s.add_development_dependency "rspec", "~> 2.6"
   s.add_development_dependency "webmock"
