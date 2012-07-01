@@ -66,27 +66,18 @@ describe Rakumarket do
     end
   end
 
-  describe "#item_lookup" do
+  describe "#item_ranking" do
     before do
-      VCR.insert_cassette 'item_lookup', :record => :new_episodes
+      stub_request(:any, /.*operation=ItemRanking.*/).to_return(:body => fixture_file('item_ranking.json'))
+      @response = Rakumarket.item_ranking :sex => :male
     end
 
-    after do
-      VCR.eject_cassette
+    it "returns an item list" do
+      @response.should be_a(Rakumarket::ItemList)
     end
 
-    context "given a simple search" do
-      before do
-        @response = Rakumarket.item_lookup "act-corp:10000580"
-      end
-
-      it "returns an item" do
-        @response.should be_a(Rakumarket::Item)
-      end
-
-      it "returns an item with item attributes" do
-        @response.code.should eq("act-corp:10000580")
-      end
+    it "return items" do
+      @response.items.first.should be_a(Rakumarket::Item)
     end
   end
 

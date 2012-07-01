@@ -236,4 +236,67 @@ describe Rakumarket::ItemSearchClient do
     end
 
   end
+
+  describe Rakumarket::ItemRankingClient do
+    before do
+      Rakumarket.developer_id = "foobar"
+    end
+
+    it "should transform genre_id to genreId" do
+      params = {:genre_id => "abc"}
+      Rakumarket::ItemRankingClient.new(params).parse['genreId'].should eq("abc")
+    end
+
+    it "should transform age_range to age" do
+      params = {:age_range => 10..19}
+      Rakumarket::ItemRankingClient.new(params).parse['age'].should eq("10")
+    end
+
+    context "with sex" do
+      it "should transform sex male" do
+        params = {:sex => :male}
+        Rakumarket::ItemRankingClient.new(params).parse['sex'].should eq("0")
+      end
+
+      it "should transform sex female" do
+        params = {:sex => 'female'}
+        Rakumarket::ItemRankingClient.new(params).parse['sex'].should eq("1")
+      end
+    end
+
+    context "with mobile" do
+      it "should transform mobile to carrier" do
+        params = {:mobile => true}
+        Rakumarket::ItemRankingClient.new(params).parse.should have_key('carrier')
+      end
+      it "should transform true to 1" do
+        params = {:mobile => true}
+        Rakumarket::ItemRankingClient.new(params).parse['carrier'].should eq("1")
+      end
+      it "should transform false to 0" do
+        params = {:mobile => false}
+        Rakumarket::ItemRankingClient.new(params).parse['carrier'].should eq("0")
+      end
+    end
+
+    describe "default parameters" do
+      before do
+        params = {}
+        @request = Rakumarket::ItemRankingClient.new(params)
+      end
+
+      it "should have an operation by default" do
+        @request.parse['operation'].should eq("ItemRanking")
+      end
+
+      it "should have a version by default" do
+        @request.parse['version'].should eq("2010-08-05")
+      end
+
+      it "should have a developer_id by default" do
+        @request.parse['developerId'].should eq(Rakumarket.developer_id)
+      end
+    end
+  end
+
 end

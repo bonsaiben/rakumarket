@@ -20,6 +20,11 @@ module Rakumarket
     ItemLookupClient.request(params)
   end
 
+  def self.item_ranking(options={})
+    params = options.symbolify_keys!
+    ItemRankingClient.request(params)
+  end
+
 
   class << self
     attr_accessor :developer_id

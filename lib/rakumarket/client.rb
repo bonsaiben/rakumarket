@@ -148,4 +148,43 @@ private
     end
   end
 
+  class ItemRankingClient < Client
+    OPERATION = "ItemRanking"
+    VERSION = "2010-08-05"
+
+    class AgeRange
+      def self.parse(range)
+        if range == (10..19)
+          "10"
+        elsif range == (20..29)
+        elsif range == (30..39)
+        elsif range == (40..49)
+        elsif range == (50..120)
+        end
+      end
+    end
+
+    class Gender
+      def self.parse(range)
+        case range.to_s
+        when 'male'; '0'
+        when 'female'; '1'
+        end
+      end
+    end
+
+    parameter :operation, :with => lambda { OPERATION }
+    parameter :version, :with => lambda { VERSION }
+    parameter :genre_id => 'genreId'
+    parameter :age_range => 'age', :with => AgeRange
+    parameter :sex, :with => Gender
+    parameter :mobile => 'carrier', :with => TrueToOne
+
+    def request
+      response = super
+      response = response.dup['Body']['ItemRanking']
+      ItemList.parse(response)
+    end
+  end
+
 end
