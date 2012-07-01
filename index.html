@@ -40,17 +40,14 @@ $ git checkout gh-pages
 <p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
 
 <h3>ItemSearch</h3>
-<pre><code>Rakumarket.item_search "keyword", options</code></pre>
+<p>Searches for items matching the given keyword.</p>
+<pre><code>item_list = Rakumarket.item_search "keyword", options</code></pre>
 <h4>Options</h4>
 <p>A hash of options, for example</p>
 <pre><code>{:price => {:maximum => 30000}, :must_be_available => true}</code></pre>
-<p>Here is a yaml representation of accepted keys and values for the options hash:</p>
+<p>Here is a full yaml representation of accepted keys and values for the options hash:</p>
 <pre><code>> puts Rakumarket::ItemSearchClient.inspect_options.to_yaml
 ---
-:developer_id: ''
-:operation: ''
-:version: ''
-:keyword: ''
 :page: ''
 :price:
 - :minimum: ''
@@ -83,6 +80,64 @@ $ git checkout gh-pages
 :must_accept_credit_cards: true|false
 </code></pre>
 
+<h4>Response</h4>
+<p><code>Rakumarket.item_search</code> returns a <code>Rakumarket::ItemList</code> object, for example:</p>
+<pre><code>> item_list.page_count
+ => 32
+> item_list.page
+ => 1
+> item_list.items.size
+ => 30
+> item_list.items.first.class
+ => Rakumarket::Item
+> item_list.items.first.name
+ => "【現定数在庫有り】ルンバ 530 新品 楽天最安挑戦価格 安心の3年保証 オマケ付き ルンバ530 ホワイト iRobot Roomba 正規品 【c_1011】【2sp_120528_b】"
+> item_list.items.first.price
+ => 30500
+</code></pre>
+
+<p>Here is a full yaml representation of ItemList attributes and values:</p>
+<pre><code>> puts Rakumarket::ItemList.inspect_attributes.to_yaml
+---
+:total_item_count: ''
+:page_count: ''
+:page: ''
+:items:
+- :name: ''
+  :catchphrase: ''
+  :code: ''
+  :price: ''
+  :caption: ''
+  :url: ''
+  :genre_id: ''
+  :affiliate_url: ''
+  :has_image: true|false
+  :small_image_url: ''
+  :medium_image_url: ''
+  :available: true|false
+  :tax_included: true|false
+  :credit_cards_accepted: true|false
+  :shop_of_the_year: true|false
+  :affiliate_rate: ''
+  :start_time: Time
+  :end_time: Time
+  :review_count: ''
+  :review_average: ''
+  :point_multiplication_factor: ''
+  :point_multiplication_start_time: Time
+  :point_multiplication_end_time: Time
+  :shop:
+    :name: ''
+    :code: ''
+    :url: ''
+  :shipping:
+    :cost_included: true|false
+    :international: true|false
+    :countries: worldwide|usa|argentina|brazil|canada|mexico|austria|belgium|denmark|france|germany|greece|italy|morocco|netherlands|poland|portugal|russia|spain|sweden|switzerland|turkey|england|australia|china|hong
+      kong|india|indonesia|south korea|malaysia|new zealand|philipines|singapore|taiwan|thailand|vietnam
+    :next_day: true|false
+    :next_day_areas: all|hokkaido|hokkaido|tohoku|aomori|iwate|miyagi|akita|yamagata|fukushima|kanto|ibaraki|tochigi|gunma|saitama|chiba|tokyo|kanagawa|koshinetsu|niigata|yamanashi|nagano|hokuriku|toyama|ishikawa|fukui|tokai|gifu|shizuoka|aichi|mie|kansai|shiga|kyoto|osaka|hyogo|nara|wakayama|chugoku|tottori|shimane|okayama|hiroshima|yamaguchi|shikoku|tokushima|kagawa|ehime|kochi|kyushu|fukuoka|saga|nagasaki|kumamoto|ooita|miyaza|kagoshima|okinawa|okinawa
+</code></pre>
 
 <h3>Rather Drive Stick?</h3>
 
