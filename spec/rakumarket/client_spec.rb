@@ -14,6 +14,14 @@ end
 
 
 describe Rakumarket::ItemSearchClient do
+  describe ".inspect_options" do
+    it "returns the available parameters" do
+      Rakumarket::ItemSearchClient.inspect_options.should eq(
+        {:developer_id=>"", :operation=>"", :version=>"", :keyword=>"", :page=>"", :price=>[{:minimum=>"", :maximum=>""}], :shipping=>[{:must_ship_international=>"true|false", :country=>"worldwide|usa|argentina|brazil|canada|mexico|austria|belgium|denmark|france|germany|greece|italy|morocco|netherlands|poland|portugal|russia|spain|sweden|switzerland|turkey|england|australia|china|hong kong|india|indonesia|south korea|malaysia|new zealand|philipines|singapore|taiwan|thailand|vietnam", :must_ship_next_day=>"true|false", :next_day_area=>"all|hokkaido|tohoku|aomori|iwate|miyagi|akita|yamagata|fukushima|kanto|ibaraki|tochigi|gunma|saitama|chiba|tokyo|kanagawa|koshinetsu|niigata|yamanashi|nagano|hokuriku|toyama|ishikawa|fukui|tokai|gifu|shizuoka|aichi|mie|kansai|shiga|kyoto|osaka|hyogo|nara|wakayama|chugoku|tottori|shimane|okayama|hiroshima|yamaguchi|shikoku|tokushima|kagawa|ehime|kochi|kyushu|fukuoka|saga|nagasaki|kumamoto|ooita|miyaza|kagoshima|okinawa", :must_include_cost=>"true|false"}], :affiliate_id=>"", :call_back=>"", :items_per_page=>"", :shop_code=>"", :genre_id=>"", :order=>"affiliate_rate|affiliate_rate asc|affiliate_rate desc|review_count|review_count asc|review_count desc|review_average|review_average asc|review_average desc|price|price asc|price desc|updated_at|updated_at asc|updated_at desc", :must_be_available=>"true|false", :deep_search=>"true|false", :mobile=>"true|false", :must_have_image=>"true|false", :or_search=>"true|false", :exclude_keyword=>"", :include_genre_info=>"true|false", :purchase_type=>"normal|regular|distribution", :must_have_point_multiplication=>"true|false", :point_multiplication_factor=>"", :must_accept_credit_cards=>"true|false"}
+      )
+    end
+  end
+
   describe "parameters" do
     it "should have an operation by default" do
       params = {}
@@ -165,138 +173,157 @@ describe Rakumarket::ItemSearchClient do
       Rakumarket::ItemSearchClient.new(params).parse['creditCardFlag'].should eq("1")
     end
   end
-
-  describe Rakumarket::GenreSearchClient do
-    describe "parameters" do
-      it "should have an operation by default" do
-        params = {}
-        Rakumarket::GenreSearchClient.new(params).parse['operation'].should eq("GenreSearch")
-      end
-
-      it "should have a version by default" do
-        params = {}
-        Rakumarket::GenreSearchClient.new(params).parse['version'].should eq("2007-04-11")
-      end
-
-      it "should have a developer_id by default" do
-        params = {}
-        Rakumarket::GenreSearchClient.new(params).parse['developerId'].should eq(Rakumarket.developer_id)
-      end
-    end
-
-    it "should transform genre_id" do
-      params = {:genre_id => "abc"}
-      Rakumarket::GenreSearchClient.new(params).parse['genreId'].should eq("abc")
-    end
-
-    it "should transform return_immediate_parent" do
-      params = {:return_immediate_parent => true}
-      Rakumarket::GenreSearchClient.new(params).parse['genrePath'].should eq("0")
-    end
-  end
-
-  describe Rakumarket::ItemLookupClient do
-    it "should transform code to itemCode" do
-      params = {:code => "abc"}
-      Rakumarket::ItemLookupClient.new(params).parse['itemCode'].should eq("abc")
-    end
-
-    context "with mobile" do
-      it "should transform mobile to carrier" do
-        params = {:mobile => true}
-        Rakumarket::ItemLookupClient.new(params).parse.should have_key('carrier')
-      end
-      it "should transform true to 1" do
-        params = {:mobile => true}
-        Rakumarket::ItemLookupClient.new(params).parse['carrier'].should eq("1")
-      end
-      it "should transform false to 0" do
-        params = {:mobile => false}
-        Rakumarket::ItemLookupClient.new(params).parse['carrier'].should eq("0")
-      end
-    end
-
-    describe "parameters" do
-      before do
-        params = {}
-        @request = Rakumarket::ItemLookupClient.new(params)
-      end
-
-      it "should have an operation by default" do
-        @request.parse['operation'].should eq("ItemCodeSearch")
-      end
-
-      it "should have a version by default" do
-        @request.parse['version'].should eq("2010-08-05")
-      end
-
-      it "should have a developer_id by default" do
-        @request.parse['developerId'].should eq(Rakumarket.developer_id)
-      end
-    end
-
-  end
-
-  describe Rakumarket::ItemRankingClient do
-    before do
-      Rakumarket.developer_id = "foobar"
-    end
-
-    it "should transform genre_id to genreId" do
-      params = {:genre_id => "abc"}
-      Rakumarket::ItemRankingClient.new(params).parse['genreId'].should eq("abc")
-    end
-
-    it "should transform age_range to age" do
-      params = {:age_range => 10..19}
-      Rakumarket::ItemRankingClient.new(params).parse['age'].should eq("10")
-    end
-
-    context "with sex" do
-      it "should transform sex male" do
-        params = {:sex => :male}
-        Rakumarket::ItemRankingClient.new(params).parse['sex'].should eq("0")
-      end
-
-      it "should transform sex female" do
-        params = {:sex => 'female'}
-        Rakumarket::ItemRankingClient.new(params).parse['sex'].should eq("1")
-      end
-    end
-
-    context "with mobile" do
-      it "should transform mobile to carrier" do
-        params = {:mobile => true}
-        Rakumarket::ItemRankingClient.new(params).parse.should have_key('carrier')
-      end
-      it "should transform true to 1" do
-        params = {:mobile => true}
-        Rakumarket::ItemRankingClient.new(params).parse['carrier'].should eq("1")
-      end
-      it "should transform false to 0" do
-        params = {:mobile => false}
-        Rakumarket::ItemRankingClient.new(params).parse['carrier'].should eq("0")
-      end
-    end
-
-    describe "default parameters" do
-      before do
-        params = {}
-        @request = Rakumarket::ItemRankingClient.new(params)
-      end
-
-      it "should have an operation by default" do
-        @request.parse['operation'].should eq("ItemRanking")
-      end
-
-      it "should have a version by default" do
-        @request.parse['version'].should eq("2010-08-05")
-      end
-
-      it "should have a developer_id by default" do
-        @request.parse['developerId'].should eq(Rakumarket.developer_id)
-      end
-    end
-  end
-
 end
+
+describe Rakumarket::GenreSearchClient do
+  describe ".inspect_options" do
+    it "returns the available parameters" do
+      Rakumarket::GenreSearchClient.inspect_options.should eq(
+        {:developer_id=>"", :operation=>"", :version=>"", :genre_id=>"", :return_immediate_parent=>"true|false"}
+      )
+    end
+  end
+
+  describe "parameters" do
+    it "should have an operation by default" do
+      params = {}
+      Rakumarket::GenreSearchClient.new(params).parse['operation'].should eq("GenreSearch")
+    end
+
+    it "should have a version by default" do
+      params = {}
+      Rakumarket::GenreSearchClient.new(params).parse['version'].should eq("2007-04-11")
+    end
+
+    it "should have a developer_id by default" do
+      params = {}
+      Rakumarket::GenreSearchClient.new(params).parse['developerId'].should eq(Rakumarket.developer_id)
+    end
+  end
+
+  it "should transform genre_id" do
+    params = {:genre_id => "abc"}
+    Rakumarket::GenreSearchClient.new(params).parse['genreId'].should eq("abc")
+  end
+
+  it "should transform return_immediate_parent" do
+    params = {:return_immediate_parent => true}
+    Rakumarket::GenreSearchClient.new(params).parse['genrePath'].should eq("0")
+  end
+end
+
+describe Rakumarket::ItemLookupClient do
+  describe ".inspect_options" do
+    it "returns the available parameters" do
+      Rakumarket::ItemLookupClient.inspect_options.should eq(
+        {:developer_id=>"", :operation=>"", :version=>"", :code=>"", :mobile=>"true|false"}
+      )
+    end
+  end
+
+  it "should transform code to itemCode" do
+    params = {:code => "abc"}
+    Rakumarket::ItemLookupClient.new(params).parse['itemCode'].should eq("abc")
+  end
+
+  context "with mobile" do
+    it "should transform mobile to carrier" do
+      params = {:mobile => true}
+      Rakumarket::ItemLookupClient.new(params).parse.should have_key('carrier')
+    end
+    it "should transform true to 1" do
+      params = {:mobile => true}
+      Rakumarket::ItemLookupClient.new(params).parse['carrier'].should eq("1")
+    end
+    it "should transform false to 0" do
+      params = {:mobile => false}
+      Rakumarket::ItemLookupClient.new(params).parse['carrier'].should eq("0")
+    end
+  end
+
+  describe "parameters" do
+    before do
+      params = {}
+      @request = Rakumarket::ItemLookupClient.new(params)
+    end
+
+    it "should have an operation by default" do
+      @request.parse['operation'].should eq("ItemCodeSearch")
+    end
+
+    it "should have a version by default" do
+      @request.parse['version'].should eq("2010-08-05")
+    end
+
+    it "should have a developer_id by default" do
+      @request.parse['developerId'].should eq(Rakumarket.developer_id)
+    end
+  end
+end
+
+describe Rakumarket::ItemRankingClient do
+  describe ".inspect_options" do
+    it "returns the available parameters" do
+      Rakumarket::ItemRankingClient.inspect_options.should eq(
+        {:developer_id=>"", :operation=>"", :version=>"", :genre_id=>"", :age_range=>"10..19|20..29|30..39|40..49|50..120", :sex=>"male|female", :mobile=>"true|false"}
+      )
+    end
+  end
+
+  it "should transform genre_id to genreId" do
+    params = {:genre_id => "abc"}
+    Rakumarket::ItemRankingClient.new(params).parse['genreId'].should eq("abc")
+  end
+
+  it "should transform age_range to age" do
+    params = {:age_range => 10..19}
+    Rakumarket::ItemRankingClient.new(params).parse['age'].should eq("10")
+  end
+
+  context "with sex" do
+    it "should transform sex male" do
+      params = {:sex => :male}
+      Rakumarket::ItemRankingClient.new(params).parse['sex'].should eq("0")
+    end
+
+    it "should transform sex female" do
+      params = {:sex => 'female'}
+      Rakumarket::ItemRankingClient.new(params).parse['sex'].should eq("1")
+    end
+  end
+
+  context "with mobile" do
+    it "should transform mobile to carrier" do
+      params = {:mobile => true}
+      Rakumarket::ItemRankingClient.new(params).parse.should have_key('carrier')
+    end
+    it "should transform true to 1" do
+      params = {:mobile => true}
+      Rakumarket::ItemRankingClient.new(params).parse['carrier'].should eq("1")
+    end
+    it "should transform false to 0" do
+      params = {:mobile => false}
+      Rakumarket::ItemRankingClient.new(params).parse['carrier'].should eq("0")
+    end
+  end
+
+  describe "default parameters" do
+    before do
+      params = {}
+      @request = Rakumarket::ItemRankingClient.new(params)
+    end
+
+    it "should have an operation by default" do
+      @request.parse['operation'].should eq("ItemRanking")
+    end
+
+    it "should have a version by default" do
+      @request.parse['version'].should eq("2010-08-05")
+    end
+
+    it "should have a developer_id by default" do
+      @request.parse['developerId'].should eq(Rakumarket.developer_id)
+    end
+  end
+end
+

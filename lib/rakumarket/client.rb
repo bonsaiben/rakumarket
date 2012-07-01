@@ -39,15 +39,13 @@ private
   end
 
   class TrueToOne
-    def self.parse value
-      value ? "1" : "0"
-    end
+    def self.values; {true => "1", false => "0"} end
+    def self.parse(value) value ? "1" : "0" end
   end
 
   class TrueToZero
-    def self.parse value
-      value ? "0" : "1"
-    end
+    def self.values; {true => "0", false => "1"} end
+    def self.parse(value) value ? "0" : "1" end
   end
 
   class ItemSearchClient < Client
@@ -56,21 +54,23 @@ private
     VERSION = "2010-09-15"
 
     class SortOrder
-      def self.parse(value) ITEM_SEARCH_SORT_ORDERS[value.downcase] end
+      def self.values; ITEM_SEARCH_SORT_ORDERS end
+      def self.parse(value) values[value.downcase] end
     end
 
     class CountryCode
-      def self.parse(value) INTERNATIONAL_DELIVERY_AREA_CODES[value] end
+      def self.values; INTERNATIONAL_DELIVERY_AREA_CODES end
+      def self.parse(value) values[value] end
     end
 
     class NextDayAreaCode
-      def self.parse(value) ASURAKU_DELIVERY_AREA_CODES[value] end
+      def self.values; ASURAKU_DELIVERY_AREA_CODES end
+      def self.parse(value) values[value] end
     end
 
     class PurchaseType
-      def self.parse(value)
-        {"normal" => 0, "regular" => 1, "distribution" => 2}[value]
-      end
+      def self.values; {"normal" => 0, "regular" => 1, "distribution" => 2} end
+      def self.parse(value) values[value] end
     end
 
     parameter :operation, :with => lambda { OPERATION }
@@ -127,7 +127,7 @@ private
     def request
       response = super
       response = response.dup['Body']['GenreSearch'] if response['Body']
-      Genre.parse(response)
+      GenreFamily.parse(response)
     end
 
   end
@@ -153,24 +153,22 @@ private
     VERSION = "2010-08-05"
 
     class AgeRange
-      def self.parse(range)
-        if range == (10..19)
-          "10"
-        elsif range == (20..29)
-        elsif range == (30..39)
-        elsif range == (40..49)
-        elsif range == (50..120)
-        end
+      def self.values
+        {
+          (10..19) => "10", 
+          (20..29) => "20", 
+          (30..39) => "30", 
+          (40..49) => "40", 
+          (50..120) => "50"
+        }
       end
+
+      def self.parse(range) self.values[range] end
     end
 
     class Gender
-      def self.parse(range)
-        case range.to_s
-        when 'male'; '0'
-        when 'female'; '1'
-        end
-      end
+      def self.values; {'male' => '0', 'female' => '1'} end
+      def self.parse(range) values[range.to_s] end
     end
 
     parameter :operation, :with => lambda { OPERATION }
