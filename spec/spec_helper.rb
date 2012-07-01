@@ -1,12 +1,12 @@
 require 'rakumarket'
-require 'vcr'
+require 'webmock/rspec'
 
-Rakumarket.developer_id = ENV['DEVELOPER_ID'] || "foobar"
+Rakumarket.developer_id = ENV['DEVELOPER_ID'] || "349556057ffad35f53c1d19ef5d01c06"
+WebMock.disable_net_connect!
 
-VCR.configure do |c|
-  c.hook_into :webmock
-  c.cassette_library_dir = 'fixtures/vcr_casettes'
-  c.filter_sensitive_data("<DEVELOPER_ID>") { Rakumarket.developer_id }
-  c.allow_http_connections_when_no_cassette = true
+def fixture_file(filename)
+  return '' if filename == ''
+  file_path = File.expand_path(File.dirname(__FILE__) + '/fixtures/' + filename)
+  File.read(file_path)
 end
 

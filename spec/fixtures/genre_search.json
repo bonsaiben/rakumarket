@@ -1,0 +1,213 @@
+{
+  "Body": {
+    "GenreSearch": {
+      "child": [
+        {
+          "genreLevel": 1,
+          "genreName": "CD・DVD・楽器",
+          "genreId": 101240
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "インテリア・寝具・収納",
+          "genreId": 100804
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "おもちゃ・ホビー・ゲーム",
+          "genreId": 101164
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "キッズ・ベビー・マタニティ",
+          "genreId": 100533
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "日用品雑貨・文房具・手芸",
+          "genreId": 215783
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "ジュエリー・アクセサリー",
+          "genreId": 216129
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "スポーツ・アウトドア",
+          "genreId": 101070
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "ダイエット・健康",
+          "genreId": 100938
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "水・ソフトドリンク",
+          "genreId": 100316
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "パソコン・周辺機器",
+          "genreId": 100026
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "バッグ・小物・ブランド雑貨",
+          "genreId": 216131
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "レディースファッション",
+          "genreId": 100371
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "花・ガーデン・DIY",
+          "genreId": 100005
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "ペット・ペットグッズ",
+          "genreId": 101213
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "TV・オーディオ・カメラ",
+          "genreId": 211742
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "車・バイク",
+          "genreId": 101114
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "食品",
+          "genreId": 100227
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "美容・コスメ・香水",
+          "genreId": 100939
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "本・雑誌・コミック",
+          "genreId": 200162
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "旅行・出張・チケット",
+          "genreId": 101381
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "不動産・住まい",
+          "genreId": 200163
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "学び・サービス・保険",
+          "genreId": 101438
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "百貨店・総合通販・ギフト",
+          "genreId": 100000
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "デジタルコンテンツ",
+          "genreId": 402853
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "車用品・バイク用品",
+          "genreId": 503190
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "インナー・下着・ナイトウエア",
+          "genreId": 100433
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "日本酒・焼酎",
+          "genreId": 510901
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "ビール・洋酒",
+          "genreId": 510915
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "スイーツ・お菓子",
+          "genreId": 551167
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "医薬品・コンタクト・介護",
+          "genreId": 551169
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "メンズファッション",
+          "genreId": 551177
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "靴",
+          "genreId": 558885
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "腕時計",
+          "genreId": 558929
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "キッチン用品・食器・調理器具",
+          "genreId": 558944
+        },
+        {
+          "genreLevel": 1,
+          "genreName": "家電",
+          "genreId": 562637
+        }
+      ],
+      "current": [],
+      "parent": []
+    }
+  },
+  "Header": {
+    "Status": "Success",
+    "Args": {
+      "Arg": {
+        "apiVersion": {
+          "content": true,
+          "value": "30"
+        },
+        "operation": {
+          "content": true,
+          "value": "GenreSearch"
+        },
+        "developerId": {
+          "content": true,
+          "value": "***"
+        },
+        "genreId": {
+          "content": true,
+          "value": "0"
+        },
+        "version": {
+          "content": true,
+          "value": "2007-04-11"
+        }
+      }
+    },
+    "StatusMsg": ""
+  }
+}
