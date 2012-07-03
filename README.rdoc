@@ -21,9 +21,6 @@ The goal was to abstract Rakuten's complex API away from users and provide a sim
 == Goals
 
 * Completeness
-* More simplerer
-* Better-tested
-
 
 
 == Installation
